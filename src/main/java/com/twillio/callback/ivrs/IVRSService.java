@@ -34,25 +34,25 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 public class IVRSService {
-	@Value("${reset.password.encryptionKey:ABCDEFGHIJKLMNOP}")
+	@Value("${reset.password.encryptionKey}")
 	private String encryptionKey;
 
-	@Value("${reset.password.characterEncoding:UTF8}")
+	@Value("${reset.password.characterEncoding}")
 	private String characterEncoding;
 
-	@Value("${reset.password.cipherTransformation:AES/CBC/PKCS5PADDING}")
+	@Value("${reset.password.cipherTransformation}")
 	private String cipherTransformation;
 
-	@Value("${reset.password.aesEncryptionAlgorithem:AES}")
+	@Value("${reset.password.aesEncryptionAlgorithem}")
 	private String aesEncryptionAlgorithem;
 
-	@Value("${twillio.account.id:AC0663502436ec89dba188c12bbc40dec0}")
+	@Value("${twillio.account.id}")
 	private String accountID;
 
-	@Value("${twillio.account.oauth.token:5ddb6756f37fed72ddc537086150d655}")
+	@Value("${twillio.account.oauth.token}")
 	private String authToken;
 
-	@Value("${twillio.account.from.phone.number:+15165189868}")
+	@Value("${twillio.account.from.phone.number}")
 	private String fromPhoneNumber;
 
 	@Autowired
