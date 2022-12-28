@@ -35,10 +35,8 @@ public class ObdService {
 						URI.create("http://demo.twilio.com/docs/classic.mp3"))
 				.setMethod(HttpMethod.GET)
 				.setStatusCallback(URI.create("https://ingress-gateway.gaiansolutions.com/utility-service/events"))
-				.setStatusCallbackEvent(Arrays.asList(Call.Event.ANSWERED.toString(), Call.Event.COMPLETED.toString(),
-						Call.Event.INITIATED.toString(), Call.Event.RINGING.toString()))
-				.setStatusCallbackMethod(HttpMethod.POST)
-				.create();
+				.setStatusCallbackEvent(Arrays.asList("queued", "initiated", "in-progress", "ringing", "completed"))
+				.setStatusCallbackMethod(HttpMethod.POST).create();
 
 		log.info("-----SID : {}", call.getSid());
 		return call.getSid();
