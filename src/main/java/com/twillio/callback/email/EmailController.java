@@ -48,6 +48,14 @@ public class EmailController {
 		return ResponseEntity.status(HttpStatus.OK).body(new ModelMap().addAttribute("msg", sendMail));
 	}
 
+	/**
+	 * https://docs.sendgrid.com/for-developers/tracking-events/event
+	 * 
+	 * @param request
+	 * @param response
+	 * @param events
+	 * @return
+	 */
 	@RequestMapping(value = "/inbound", method = { RequestMethod.POST }, consumes = { "application/json" })
 	public ResponseEntity<?> sendgridWebhook(HttpServletRequest request, HttpServletResponse response,
 			@RequestBody List<SendGridEvent> events) {
