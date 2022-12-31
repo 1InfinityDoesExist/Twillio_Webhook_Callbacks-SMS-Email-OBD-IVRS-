@@ -48,7 +48,7 @@ public class SMSController {
 	 * Delivered: Twilio has received a confirmation from our Super Network partner
 	 * advising the message has been delivered.
 	 * 
-	 * 
+	 * https://www.twilio.com/docs/sms/outbound-message-logging#:~:text=Using%20the%20Status%20Callback%20URL,current%20status%20of%20the%20message.
 	 * 
 	 * 
 	 * @param request
@@ -59,7 +59,19 @@ public class SMSController {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String messageSid = request.getParameter("MessageSid");
 		String messageStatus = request.getParameter("MessageStatus");
-		log.info("SID: {}, Status: {}", messageSid, messageStatus);
+		String messagingServiceSid = request.getParameter("MessagingServiceSid");
+		String accountSid = request.getParameter("AccountSid");
+		String from = request.getParameter("From");
+		String apiVersion = request.getParameter("ApiVersion");
+		String to = request.getParameter("To");
+		String smsStatus = request.getParameter("SmsStatus");
+		String smsSid = request.getParameter("SmsSid");
+
+		SMSCallbackModel callbackModel = SMSCallbackModel.builder().messageSid(messageSid).messageStatus(messageStatus)
+				.messagingServiceSid(messagingServiceSid).accountSid(accountSid).from(from).apiVersion(apiVersion)
+				.to(to).smsSid(smsSid).smsStatus(smsStatus).build();
+
+		log.info("-----SMSCallbackModel : {}", callbackModel);
 	}
 
 }
